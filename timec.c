@@ -2,11 +2,13 @@
 #include <time.h>
 
 int main(){
+ 	time_t rawtime;
+  	struct tm * timeinfo;
 
-	clock_t start_t;
+  	time ( &rawtime );
+  	timeinfo = localtime ( &rawtime);
 
-	start_t = clock();
-   	printf("Сейчас в Амстердаме, start_t = %ld\n", start_t);
+   	printf("Сейчас в Амстердаме: %s", asctime (timeinfo));
     	return 0;	
 
 }
