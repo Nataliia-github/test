@@ -10,10 +10,10 @@ int main (){
   farh = lower;
   upper = 300;
 
+  printf ("Соответсвие температур в градусах F/C:\n");
   printf ("-------------------------------------\n");
   while (farh <= upper){
 	celsium = ( 5.0 / 9.0 ) * ( farh - 32 );
-	printf ("Соответсвие температур в градусах F/C:\n");
 	printf ("|%17.0f|%17.2f|\n",farh,celsium);
 	farh = farh + step;
   }
