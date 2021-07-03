@@ -1,12 +1,11 @@
 #include <stdio.h>
 
 int main(){
+	double c;	
 	
-	int c;
-	c = getchar();
-	
-	while (c != EOF){
-		putchar (c);
-		c = getchar ();
-		}	
+	//while ((c = getchar()) != EOF){
+	//putchar (c);	
+	//}
+	c = (double)(EOF);
+   	printf("\nThe value of EOF: %f\n\n", c);
 }
