@@ -14,10 +14,14 @@ int main (){
 	
 	temp = (a == b) && ( b > c);
 
-	if ( temp == 1 ){
-		printf ("It's TRUE\n");
+	if ( a >= b ){
+		if (a == b){
+			printf ("%d = %d\n", a, b);
+		}
+		else
+			printf ("%d > %d\n", a, b); 
 	}
 	else
-		printf ("It's FALSE\n");	
+		printf ("%d < %d\n", a, b);	
 	return 0;
 }
