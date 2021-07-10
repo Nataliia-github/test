@@ -1,9 +1,10 @@
 #include <stdio.h>
 
-int main(){
+int main(){	
 	char letter;
 	char vowels[] = {'a','e','i','o','u'};
-	int is_consonant = 1;
+	int i, is_consonant = 1;
+
 	printf ("Input letter for check: ");
 	scanf ("%c", &letter);
 
