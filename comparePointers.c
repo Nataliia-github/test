@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #define STCKSIZE 50
 
-void push (int i);
+void push (int asValue);
 int pop (void);
 int *p1, *tos, stack[STCKSIZE];
 
@@ -24,13 +24,13 @@ int main(){
     return 0;
 }
 
-void push(int i){
+void push(int asValue){
     p1++;
     if (p1 == (tos+STCKSIZE)){
         printf("stack overflow\n");
         exit(1);
     }
-    *p1 = i;
+    *p1 = asValue;
 }
 
 int pop(void){
