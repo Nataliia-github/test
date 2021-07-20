@@ -5,6 +5,7 @@ int main () {
 int values [5];
 int i;
 int sum = 0, avarege = 0;
+
     
     for (i = 0; i < 5; ++i){
         scanf("%d", &values[i]);
