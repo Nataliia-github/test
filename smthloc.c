@@ -56,6 +56,7 @@ int main(){
         sum += *(ptr + i);   
     }
     printf("Sum = %d\n\n", sum);
+    free(ptr);
     return 0;
 
 }
