@@ -5,7 +5,7 @@ int main(){
     int i, n, sum = 0, average = 0;
 
     printf("Enter leight of array: ");
-    scanf("%d", &n); 
+    scanf("%d", &n);
     int arrayA[n];
 
     printf("Enter %d element: \n", n);
@@ -16,7 +16,7 @@ int main(){
 
     average = sum / n;
     printf("The average is: %d\n\n", average);
-    
+
     return 0;
 }
 
@@ -30,7 +30,7 @@ int main(){
 
     int i, n, *ptr, sum = 0, average = 0;
     printf("Enter leight of array: ");
-    scanf("%d", &n); 
+    scanf("%d", &n);
     int arrayA[n];
     ptr = arrayA;
 
@@ -44,7 +44,7 @@ int main(){
 
     average = sum / n;
     printf("The average is: %d\n\n", average);
-    
+
     return 0;
 }
 
@@ -61,7 +61,7 @@ int main(){
     printf("\n\nEnter a number of elements: ");
     scanf("%d", &n);
     int arrayA[n];
-    
+
     printf("Enter %d elements: \n", n);
     for (i = 0; i < n; ++i){
         scanf("%d", &arrayA[i]);
@@ -83,11 +83,11 @@ int main(){
 
 // ex 3. Calculate Standard Deviation
 
-#include <stdio.h>
 #include <math.h>
+#include <stdio.h>
 
 int main(){
-    
+
     int i;
     double stDeviation = 0, arrayA[10], sum = 0, ave = 0, deviation[10], sqrt();
 
@@ -100,7 +100,7 @@ int main(){
     // Find average
     ave = sum / 10;
     printf("Average = %f\n", ave);
-    
+
     // Make array of deviations
     i = 0;
     while (i < 10){
@@ -112,7 +112,7 @@ int main(){
     // Find Standart Deviations
     stDeviation = stDeviation / 9;
     printf("Standart deviation is: %.3lf\n\n", sqrt(stDeviation));
-    
+
     return 0;
 }
 
@@ -120,14 +120,14 @@ int main(){
 
 // ex 3. way 2. Calculate Standard Deviation
 
-#include <stdio.h>
 #include <math.h>
+#include <stdio.h>
 
 float stDeviation(float arrayA[]);
 
 int main(){
 
-    int i; 
+    int i;
     float arrayA[10];
 
     printf("Input 10 numbers: \n");
@@ -137,7 +137,7 @@ int main(){
 
     printf("\nStandart deviation is: %f\n", stDeviation(arrayA));
 
-    return 0;   
+    return 0;
 }
 
 float stDeviation (float arrayF[]){
@@ -152,7 +152,7 @@ float stDeviation (float arrayF[]){
     }
     return sqrt(deviation/9);
 }
-*/
+
 ///////////////////////////////////////////////////
 
 // ex 4. Two Matrices Using Multi-dimensional Arrays
@@ -193,6 +193,227 @@ int main(){
             printf("Element %d %d matrix Sum: %d\n", i, j, arraySum[i][j]);
         }
     }
+
+    return 0;
+}
+
+///////////////////////////////////////////////////////////////
+
+// ex 5. Multiply Two Matrices Using Multi-dimensional Arrays
+
+#include <stdio.h>
+
+int main(){
+
+    int i, j, row, colum;
+
+    printf("Enter numbers of row: ");
+    scanf("%d", &row);
+    printf("Enter number of colums: ");
+    scanf("%d", &colum);
+
+    int arrayA[row][colum], arrayB[row][colum], arrayMul[row][colum];
+
+    printf("\n\nFill first matrix: \n");
+    for (i = 0; i < row; ++i){
+        for (j = 0; j < colum; ++j){
+            printf("Enter %d %d matrix A: ", i, j);
+            scanf("%d", &arrayA[i][j]);
+        }
+    }
+
+    printf("\nFill second matrix: \n");
+    for (i = 0; i < row; ++i){
+        for (j = 0; j < colum; ++j){
+            printf("Enter %d %d matrix B: ", i, j);
+            scanf("%d", &arrayB[i][j]);
+        }
+    }
+
+    printf("\n");
+
+    for (i = 0; i < row; ++i){
+        for (j = 0; j < colum; ++j){
+            arrayMul[i][j] = arrayA[i][j] * arrayB[i][j];
+            printf("Element %d %d matrix Multi: %d\n", i, j, arrayMul[i][j]);
+        }
+    }
+
+    return 0;
+}
+
+
+/////////////////////////////////////////////////////////
+
+// ex 5. way 2. Multiply Two Matrices Using Multi-dimensional Arrays
+#include <stdio.h>
+
+// Function to get the elements of array
+
+void getElements(int get[][10], int row, int column) {
+
+  printf("\n\nFill elements of matrix: \n");
+ 
+  for (int i = 0; i < row; ++i) {
+    for (int j = 0; j < column; ++j) {
+        printf("Enter a %d%d: ", i + 1, j + 1);
+        scanf("%d", &get[i][j]);
+    }
+  }
+}
+
+void multi(int arrayFA[][10], int arrayFB[][10], int result[][10], int row1, int col1, int row2, int col2) {
+
+  // making array with arrayA rows = arrayB columns
+  for (int i = 0; i < row1; ++i) {
+    for (int j = 0; j < col2; ++j) {
+      result[i][j] = 0;
+      // printf("%d",result[i][j]);
+    }
+  }
+
+  // multiply arrays
+  for (int i = 0; i < row1; ++i) {
+    for (int j = 0; j < col2; ++j) {
+      // result[i][j] = 0;
+      for (int k = 0; k < col1; ++k) {
+        result[i][j] += arrayFA[i][k] * arrayFB[k][j];
+      }
+    }
+  }
+}
+
+// function to print the result
+
+void display(int result[][10], int row, int column) {
+  printf("\n Result is: \n");
+  for (int i = 0; i < row; i++) {
+    for (int j = 0; j < column; ++j) {
+      printf("%d ", result[i][j]);
+      if (j == column - 1) printf("\n");
+    }
+  }
+}
+
+int main() {
+
+  int arrayA[10][10], arrayB[10][10], result[10][10], rowA, colA, rowB, colB;
+
+  printf("Print numbers of rows and columns of array A: \n");
+  scanf("%d %d", &rowA, &colA);
+
+  printf("Print numbers of rows and columns of array B: \n");
+  scanf("%d %d", &rowB, &colB);
+
+  while (colA != rowB) {
+    printf("Error! Number of column array A must be equal number of rows of array B.");
+    printf("Print numbers of rows of array A: ");
+    scanf("%d %d", &rowA, &colA);
+    printf("Print numbers of rows of array B: ");
+    scanf("%d %d", &rowB, &colB);
+  }
+
+  // Get elements of first array A
+  getElements(arrayA, rowA, colA);
+
+  // Get elements of second array B
+  getElements(arrayB, rowB, colB);
+
+  // multiply arrays
+  multi(arrayA, arrayB, result, rowA, colA, rowB, colB);
+
+  // display the result
+  display(result, rowA, colB);
+
+  return 0;
+}
+*/
+////////////////////////////////////////////////////////////
+
+#include <stdio.h>
+
+// 1. Get numbers of row and columns of the arrays / 
+// 2. Get elements of A and B array / function getElements
+// 3. Create result array / function createArrayRes
+// 4. Count multuply of two arrays / function multiplyArrays
+// 5. Output the result / printResult
+
+void getElements(int array[][10], int row, int column){
+    for (int i = 0; i < row; ++i){
+        for (int j = 0; j < column; ++j){
+            printf("Enter element %d%d: ", i, j);
+            scanf("%d", &array[i][j]);
+            // printf("echo %d\n", array[i][j]);
+        }
+    }
+}
+
+
+void multiplyArrays (int arrayAF[][10], int arrayBF[][10], int arrayResF[][10], int rowAF, int colAF, int rowBF, int colBF){
+
+    for (int i = 0; i < rowAF; ++i){
+        for (int j = 0; j < colBF; j++) {
+            arrayResF[i][j] = 0;  
+        }
+    }
+
+    for (int i = 0; i < rowAF; ++i){
+        for (int j = 0; j < colBF; ++j){
+            for (int k = 0; k < colAF; ++k){
+                // printf("arrayResF[i][j] %d += arrayAF[i][k] %d * arrayBF[k][j] %d ;\n", arrayResF[i][j], arrayAF[i][k], arrayBF[k][j]);
+                arrayResF[i][j] += arrayAF[i][k] * arrayBF[k][j];
+                // printf("%d\n", arrayResF[i][j]);
+            }
+        }
+    }
+}
+
+void printResult(int arrayRes[][10], int colAF, int rowBF){
+    for (int i = 0; i < rowBF; ++i){
+        for (int j = 0; j < colAF; ++j){
+            printf("%d ", arrayRes[i][j]);
+            if (j == colAF - 1) printf("\n");
+        }
+    }
+}
+
+int main(){
+
+    int arrayA[10][10], arrayB [10][10], arrayRes[10][10];
+    int rowA, colA, rowB, colB;
+
+    printf("Enter row and column of array A: \n");
+    scanf("%d %d", &rowA, &colA);
+    // int arrayA [rowA][colA];
+
+    printf("Enter row and column of array B: \n");
+    scanf("%d %d", &rowB, &colB);
+    // int arrayB [rowB][colB];
+
+    getElements(arrayA, rowA, colA);
+    getElements(arrayB, rowB, colB);  
+
+        // for (int i = 0; i < rowA; ++i){
+        //     for (int j = 0; j < colA; ++j){
+        //         printf("\n Array A %d ", arrayA[i][j]);
+        //         if (j == colA - 1) printf("\n");
+        //     }
+        // } 
+        //         for (int i = 0; i < rowB; ++i){
+        //     for (int j = 0; j < colB; ++j){
+        //         printf("\n Array B %d ", arrayB[i][j]);
+        //         if (j == colB - 1) printf("\n");
+        //     }
+        // } 
+
+    // int arrayRes[rowB][colA];
+    // createArrayRes(arrayRes, rowB, colA);
+
+    multiplyArrays(arrayA, arrayB, arrayRes, rowA, colA, rowB, colB);
+
+    
+    printf("\nResult is : \n"); 
+    printResult(arrayRes, colA, rowB);
 
     return 0;
 }
