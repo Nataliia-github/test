@@ -327,7 +327,7 @@ int main() {
 
   return 0;
 }
-*/
+
 ////////////////////////////////////////////////////////////
 
 #include <stdio.h>
@@ -414,6 +414,152 @@ int main(){
     
     printf("\nResult is : \n"); 
     printResult(arrayRes, colA, rowB);
+
+    return 0;
+}
+
+
+/////////////////////////////////////////////////////////
+// ex 6. Find Transpose of a Matrix
+
+// 1. Create and fill first matrix A / function enterElements
+// 2. Print matrix A / function printArray
+// 3. Create matrix AT - Transpose A / function transposeArray
+// 4. Fill matrix AT / function transposeArray
+// 5. Print the result / function printArray
+
+#include <stdio.h>
+
+void enterElements (int arrayAF[10][10],int rowAF,int colAF){
+    for (int i = 0; i < rowAF; ++i){
+        for (int j = 0; j < colAF; ++j){
+            printf("Enter element %d%d: ", i, j);
+            scanf("%d", &arrayAF[i][j]);
+        }
+    }
+}
+
+void printArray (int arrayF[10][10], int rowF, int colF){
+    printf("Array :\n");
+    for (int i = 0; i < rowF; ++i){
+        for (int j = 0; j < colF; ++j){
+            printf("%d ", arrayF[i][j]);
+            if (j == colF - 1) printf("\n");
+         }
+    }
+}
+
+void transposeArray (int arrayAF[10][10], int rowAF, int colAF, int arrayATF[10][10]){
+    for (int i = 0; i < rowAF; ++i){
+        for (int j = 0; j < colAF; ++j){
+            arrayATF[j][i] = arrayAF [i][j];
+        }
+    }
+}
+
+int main(){
+
+    int rowA, colA;
+    int arrayAT[10][10];
+    int arrayA [10][10];
+
+    printf("Enter number of rows and colunms of A array(max 10): \n");
+    scanf("%d %d", &rowA, &colA);
+    // int arrayA [rowA][colA];
+
+    enterElements(arrayA, rowA, colA);
+
+    printArray(arrayA, rowA, colA);
+
+    // int arrayAT[][10];
+    transposeArray(arrayA, rowA, colA, arrayAT);
+
+    printArray(arrayAT, colA, rowA);
+    printf("The end.\n\n");
+    
+    return 0;
+}
+*/
+
+//////////////////////////////////////////////////////////////////
+// ex 7. Multiply two Matrices by Passing Matrix to a Function
+
+// 1. Enter number of rows and columns 
+// 2. Enter elements of matrix / function enterElements
+// 3. Print matrixs / printArray 
+// 4. Multiply arrays / multiplyArrays
+// 5. Print the result / printArray
+
+#include <stdio.h>
+#include <math.h>
+
+void enterElements (int arrayF[][10],int rowF,int colF){
+    for (int i = 0; i < rowF; ++i){
+        for (int j = 0; j < colF; ++j){
+            scanf("%d", &arrayF[i][j]);
+        }
+    }
+} 
+
+void printArray (int arrayF[][10], int rowF, int colF){
+    for (int i = 0; i < rowF; ++i){
+        for (int j = 0; j < colF; ++j){
+            printf("%d ", arrayF[i][j]);
+            if (j == colF - 1) printf("\n");
+        }
+    }    
+}
+
+void multiplyArrays (int arrayAF[][10], int rowAF, int colAF,int arrayBF[][10], int rowBF, int colBF, int resArrayF[][10]){
+    for (int i = 0; i < rowAF; ++i){
+        for (int j = 0; j < colBF; ++j){
+            resArrayF[i][j] = 0;
+            for (int k = 0; k < colAF; ++k){
+                resArrayF[i][j] += arrayAF[i][k] * arrayBF[k][j];
+            }
+        }
+    }
+}
+
+int main (){
+
+    int rowA, colA, rowB, colB;
+    int arrayA[10][10];
+    int arrayB[10][10];
+    int resMultiplyArrays [10][10];
+
+    printf("Enter number of rows ang columns A array (max 10): \n");
+    scanf("%d %d", &rowA, &colA);
+    printf("\n");
+
+    printf("Enter number of rows ang columns B array (max 10): \n");
+    scanf("%d %d", &rowB, &colB);
+    printf("\n");
+
+    while (colA != rowB) {
+        printf("Error! Can't multiply this arrays. Enter colA = rowB.");
+        printf("Enter number of rows and columns A array (max 10): \n");
+        scanf("%d %d", &rowA, &colA);
+        printf("\n");
+
+        printf("Enter number of rows and columns B array (max 10): \n");
+        scanf("%d %d", &rowB, &colB);
+        printf("\n");
+    }
+
+    printf("Enter elements of A array: \n");
+    enterElements(arrayA, rowA, colA);
+    printf("\n");
+
+    printf("Enter elements of B array: \n");
+    enterElements(arrayB, rowB, colB);
+    printf("\n");
+    
+    multiplyArrays (arrayA, rowA, colA, arrayB, rowB, colB, resMultiplyArrays);
+
+    printf("The result array: \n");
+    printArray(resMultiplyArrays, rowA, colB);
+    printf("\n");
 
     return 0;
 }
