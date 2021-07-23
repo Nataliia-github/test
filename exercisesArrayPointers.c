@@ -479,7 +479,7 @@ int main(){
     
     return 0;
 }
-*/
+
 
 //////////////////////////////////////////////////////////////////
 // ex 7. Multiply two Matrices by Passing Matrix to a Function
@@ -571,3 +571,32 @@ int main (){
 
     return 0;
 }
+*/
+///////////////////////////////////////////////////////////
+
+// ex 8. Access Array Elements Using Pointer
+
+// 1. Enter array[5];
+// 2. Enter elements of array
+// 3. Print with pointers
+
+#include <stdio.h>
+
+int main(){
+
+    int array[5];
+
+    printf("Enter elements of array: \n");
+    for (int i = 0; i < 5; ++i){
+        printf("Enter element %d: \n", i + 1);
+        scanf("%d", array + i);
+    }
+
+    printf("The origin array is: \n");
+    for (int i = 0; i < 5; ++i){
+        printf("Element %d = %d \n", i + 1, *(array + i));
+    }    
+
+    return 0;
+}
+
