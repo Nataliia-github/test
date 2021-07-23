@@ -599,7 +599,7 @@ int main(){
 
     return 0;
 }
-*/
+
 /////////////////////////////////////////////////////////
 
 // ex 9. Swap Numbers in Cyclic Order Using Call by Reference
@@ -613,7 +613,6 @@ void cyclicSwap (int *af, int *bf, int *cf){
     *cf = *af;
     *af = temp;
 }
-
 
 
 int main(){
@@ -631,3 +630,38 @@ int main(){
 
     return 0;
 }
+
+//////////////////////////////////////////////////////
+
+ // ex 10. Find Largest Number Using Dynamic Memory Allocation
+
+ #include <stdio.h>
+ #include <stdlib.h>
+
+ int main(){
+
+     int n;
+     double *data;
+
+    printf("Enter numbers of elements: ");
+    scanf("%d", &n);
+
+    data = (double*)calloc(n, sizeof(double));
+    
+    for (int i = 0; i < n; ++i){
+        printf("Enter element %d: \n", i + 1);
+        scanf("%lf", data + i);
+    }
+
+    for (int i = 0; i < n; ++i) {
+        if (*data < *(data + i)){
+            *data = *(data + i);
+        }
+    }
+
+    printf("The lagest element is: %lf\n", *data);
+
+    free (data);
+    return 0;
+ }   
+ */
