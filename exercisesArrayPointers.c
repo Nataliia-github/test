@@ -555,6 +555,14 @@ int main (){
     enterElements(arrayB, rowB, colB);
     printf("\n");
     
+    printf("The A array: \n");
+    printArray(arrayA, rowA, colA);
+    printf("\n");
+
+    printf("The B array: \n");
+    printArray(arrayB, rowB, colB);
+    printf("\n");
+
     multiplyArrays (arrayA, rowA, colA, arrayB, rowB, colB, resMultiplyArrays);
 
     printf("The result array: \n");
