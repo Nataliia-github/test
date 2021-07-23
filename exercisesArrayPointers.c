@@ -571,7 +571,7 @@ int main (){
 
     return 0;
 }
-*/
+
 ///////////////////////////////////////////////////////////
 
 // ex 8. Access Array Elements Using Pointer
@@ -599,4 +599,35 @@ int main(){
 
     return 0;
 }
+*/
+/////////////////////////////////////////////////////////
 
+// ex 9. Swap Numbers in Cyclic Order Using Call by Reference
+
+#include <stdio.h>
+
+void cyclicSwap (int *af, int *bf, int *cf){
+    int temp;
+    temp = *bf;
+    *bf = *cf;
+    *cf = *af;
+    *af = temp;
+}
+
+
+
+int main(){
+
+    int a, b, c;
+
+    printf("Enter elements: \n");
+    scanf("%d %d %d", &a, &b, &c);
+
+    printf("Before Swap: \na = %d\nb = %d\nc = %d\n", a, b, c);
+
+    cyclicSwap(&a, &b, &c);
+
+    printf("After Swap: \na = %d\nb = %d\nc = %d\n", a, b, c);
+
+    return 0;
+}
